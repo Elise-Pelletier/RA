@@ -19,6 +19,8 @@ public class BallShooter : MonoBehaviour
         {
             Vector3 spawnPosition = mainCamera.transform.position + mainCamera.transform.forward * 0.5f;
 
+            print("ShootBall called");
+
             // Instanciation
             GameObject ballshoot = Instantiate(ball, spawnPosition, Quaternion.identity);
 
