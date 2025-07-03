@@ -5,31 +5,25 @@ using UnityEngine.InputSystem;
 public class BallShooter : MonoBehaviour
 {
     public GameObject ball;
-    public float shootForce = 700f;
+    public float shootForce = 10f;
     private Camera mainCamera;
 
     void Start()
     {
-        mainCamera = Camera.main; // Récupère la caméra principale
+        mainCamera = Camera.main;
     }
 
     public void ShootBall(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            Vector3 spawnPosition = mainCamera.transform.position + mainCamera.transform.forward * 0.5f;
-
-            print("ShootBall called");
-
+            print(context.performed);
             // Instanciation
-            GameObject ballshoot = Instantiate(ball, spawnPosition, Quaternion.identity);
+            //GameObject ballshoot = Instantiate(ball, transform.position, transform.rotation);
 
             // Lancer la balle
-            Rigidbody rb = ballshoot.GetComponent<Rigidbody>();
-                if (rb != null)
-                {
-                    rb.AddForce(mainCamera.transform.forward* shootForce);
-                }
+            //Rigidbody ballRigidbody = ballshoot.GetComponent<Rigidbody>.AddForce(mainCamera, transform.forward * shootForce, ForceMode.Im
+
         }
     }
 }
