@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
+using TMPro;
 
 public class CiblesManager : MonoBehaviour
 {
@@ -10,9 +11,9 @@ public class CiblesManager : MonoBehaviour
     private Dictionary<GameObject, bool> fallenStates = new Dictionary<GameObject, bool>();
     public int score = 0;
     public int ciblesTombees = 0;
-    private CiblesManager instance;
+    public static CiblesManager instance;
 
-    void Start()
+    public void Start()
     {
         instance = this;
         // Initialiser chaque cible comme "non tombée"
@@ -23,7 +24,7 @@ public class CiblesManager : MonoBehaviour
         }
     }
 
-    void Update()
+    public void Update()
     {
         foreach (GameObject cible in cibles)
         {
@@ -36,15 +37,12 @@ public class CiblesManager : MonoBehaviour
                 Debug.Log($"La cible {cible.name} est tombée !");
                 score++;
                 ciblesTombees++;
+                
 
                 if (ciblesTombees == cibles.Count)
                 {
-                    Debug.Log(gameObject);
-                    //Destroy(gameObject);
-                    Debug.Log("Table détruite !");
                     ciblesTombees = 0;
-                    print(ciblesTombees);
-                    RestartCibles();
+                    RestartCibles();                   
                     
                 }
             }
@@ -64,5 +62,4 @@ public class CiblesManager : MonoBehaviour
             fallenStates[cible] = false; // Réinitialiser l'état de la cible
         }
     }
-
 }
