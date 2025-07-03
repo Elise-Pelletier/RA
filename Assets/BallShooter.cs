@@ -6,7 +6,6 @@ public class BallShooter : MonoBehaviour
 {
     public GameObject ball;
     private float shootForce = 5f;
-    private Camera mainCamera;
 
     public void ShootBall(InputAction.CallbackContext context)
 
