@@ -1,29 +1,27 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class BallShooter : MonoBehaviour
 {
     public GameObject ball;
-    public float shootForce = 10f;
+    private float shootForce = 5f;
     private Camera mainCamera;
 
-    void Start()
-    {
-        mainCamera = Camera.main;
-    }
-
     public void ShootBall(InputAction.CallbackContext context)
-    {
+
+    {   
+        if(ObjectSpawner.Instance.enableSpawn) 
+            return; // Ne pas tirer si le spawn est activé
+
         if (context.performed)
-        {
-            print(context.performed);
-            // Instanciation
-            //GameObject ballshoot = Instantiate(ball, transform.position, transform.rotation);
+            {
+                GameObject ballshoot = Instantiate(ball, transform.position, transform.rotation);
 
-            // Lancer la balle
-            //Rigidbody ballRigidbody = ballshoot.GetComponent<Rigidbody>.AddForce(mainCamera, transform.forward * shootForce, ForceMode.Im
+                // Lancer la balle
+                ballshoot.GetComponent<Rigidbody>().AddForce(transform.forward * shootForce, ForceMode.Impulse);
 
-        }
+            }
     }
+ 
 }
