@@ -12,6 +12,9 @@ public class CiblesManager : MonoBehaviour
     public int score = 0;
     public int ciblesTombees = 0;
     public static CiblesManager instance;
+    public GameObject plateau;
+
+
 
     public void Start()
     {
@@ -31,19 +34,19 @@ public class CiblesManager : MonoBehaviour
             // Vérifie que la cible existe (au cas où elle a été détruite)
             if (cible == null) continue;
 
-            if (!fallenStates[cible] && cible.transform.position.y < 0.5f)
+            if (!fallenStates[cible] && cible.transform.position.y < plateau.transform.position.y)
             {
                 fallenStates[cible] = true;
                 Debug.Log($"La cible {cible.name} est tombée !");
                 score++;
                 ciblesTombees++;
-                
+
 
                 if (ciblesTombees == cibles.Count)
                 {
                     ciblesTombees = 0;
-                    RestartCibles();                   
-                    
+                    RestartCibles();
+
                 }
             }
         }
@@ -53,7 +56,7 @@ public class CiblesManager : MonoBehaviour
     {
         foreach (GameObject cible in cibles)
         {
-                
+
             cible.transform.position = ciblesPositions[cibles.IndexOf(cible)];
             cible.transform.rotation = Quaternion.identity;
             Rigidbody rb = cible.GetComponent<Rigidbody>();
@@ -62,4 +65,6 @@ public class CiblesManager : MonoBehaviour
             fallenStates[cible] = false; // Réinitialiser l'état de la cible
         }
     }
+
+   
 }
