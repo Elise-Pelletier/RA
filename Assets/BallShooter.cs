@@ -5,7 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 public class BallShooter : MonoBehaviour
 {
     public GameObject ball;
-    private float shootForce = 5f;
+    private float shootForce = 50f;
     public static BallShooter instance;
 
     private void Start()
