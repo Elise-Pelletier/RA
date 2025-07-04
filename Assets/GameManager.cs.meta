@@ -1,2 +1,13 @@
 fileFormatVersion: 2
 guid: e104aced8dcb6e64e86765c98751daf3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - RestartButton: {fileID: 1131450087663599589, guid: 53557313577c96c49a4ea0da9be7cb7d,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

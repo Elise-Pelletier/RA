@@ -5,11 +5,14 @@ public class GameManager : MonoBehaviour
 {
     public float timer = 20f; 
     public static GameManager instance;
+    public GameObject RestartButton;
+    public bool gameEnded = false;
+
 
     private void Start()
     {
         instance = this;
-        // Initialize the timer or any other game state here
+        RestartButton.SetActive(false);
     }
 
     void Update()
@@ -22,6 +25,9 @@ public class GameManager : MonoBehaviour
         if(timer <= 0)
         {
             timer = 0;
+            gameEnded = true;
+            print("Game Over");
+            RestartButton.SetActive(true);
 
         }
     }

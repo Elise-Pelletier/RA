@@ -6,12 +6,21 @@ public class BallShooter : MonoBehaviour
 {
     public GameObject ball;
     private float shootForce = 5f;
+    public static BallShooter instance;
+
+    private void Start()
+    {
+        instance = this;
+    }
 
     public void ShootBall(InputAction.CallbackContext context)
 
     {   
         if(ObjectSpawner.Instance.enableSpawn) 
             return; // Ne pas tirer si le spawn est activé
+
+        if (GameManager.instance.timer <= 0f)
+            return;
 
         if (context.performed)
             {
